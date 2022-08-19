@@ -34,9 +34,9 @@ var (
 	log        = logf.RuntimeLog.WithName("client").WithName("config")
 )
 
-func init() {
-	// TODO: Fix this to allow double vendoring this library but still register flags on behalf of users
-	flag.StringVar(&kubeconfig, "kubeconfig", "",
+// RegisterFlags registers the kubeconfig flag variable to the given FlagSet.
+func RegisterFlags(flags *flag.FlagSet) {
+	flags.StringVar(&kubeconfig, "kubeconfig", "",
 		"Paths to a kubeconfig. Only required if out-of-cluster.")
 }
 

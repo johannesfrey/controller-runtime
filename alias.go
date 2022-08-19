@@ -17,6 +17,8 @@ limitations under the License.
 package controllerruntime
 
 import (
+	"flag"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"sigs.k8s.io/controller-runtime/pkg/builder"
@@ -148,3 +150,7 @@ var (
 	// SetLogger sets a concrete logging implementation for all deferred Loggers.
 	SetLogger = log.SetLogger
 )
+
+func init() {
+	config.RegisterFlags(flag.NewFlagSet("controller-runtime", flag.ExitOnError))
+}
